@@ -28,10 +28,9 @@ $.getJSON({
                return true
              }
           })
-          let lastWords = filteredString.slice(-4, filteredString.length)
+          let lastWords = filteredString.slice(-2, filteredString.length) //riduco il numero di parole prendendo le ultime x
         
           console.log(lastWords)
-          
       //seconda chiamata per le ricette
 
       let apiKey = "aa14fbbd2e93d8dee453a8bc3f5fee12"
