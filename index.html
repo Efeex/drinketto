@@ -13,7 +13,20 @@
     <script src="https://unpkg.com/masonry-layout@4.2.1/dist/masonry.pkgd.min.js"></script>
     <script src="js/allStopwords.js"></script>
 
-    <script id="" type="text/x-handlebars-template"></script>
+    <script id="beer-card" type="text/x-handlebars-template">
+        <div class="card">
+                <div class="card-header">
+                        <h4 class="card-title">{{name}}</h4>
+                        <h6 class="card-title">Family: {{#if tertiary_category}}"{{tertiary_category}}" {{else}} "{{secondary_category}}" {{/if}}</h6>
+                </div>
+                <img class="card-img-top" src="{{#if image_url}} https://dx5vpyka4lqst.cloudfront.net/products/{{id}}/images/full.jpeg {{else if image_thumb_url}} https://dx5vpyka4lqst.cloudfront.net/products/{{id}}/images/thumb.png {{else}} http://placehold.it/700x400 {{/if}}" alt="Card image cap">
+                <div class="card-footer">
+                    <p>From: {{origin}}</p>
+                    <p>Flavor: "{{style}}"</p>   
+                    <a href="#" class="btn btn-primary" data-suggestion="{{serving_suggestion}}">View receips</a>
+                </div>
+            </div>
+    </script>
     <script src="js/index.js"></script>
 </head>
 
@@ -44,8 +57,10 @@
         </form>
 </nav>
       
-
-    <div id="drink-container"></div>
+<div class="container my-5">
+    <div id="drink-container" class="card-columns">
+        
+    </div>
+</div>
 </body>
-
 </html>
