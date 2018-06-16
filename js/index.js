@@ -1,52 +1,73 @@
+//seleziono ed inizializzio il container per il template di Handlebars
 $(function () {
   var beerCardTpl = Handlebars.compile($("#beer-card").html()),
     container = $("#drink-container")
-  //prima chiamata per le bevande
-  $.getJSON({
-    url: 'https://lcboapi.com/products?order=id',
-    headers: {
-      'Authorization': 'Token MDo4MDg5NDA5ZS02NWI4LTExZTgtYWVkMy1lYjg2ZTYxZjAyMjg6WEJqeXNha3BzYXl2QTZVeTVyNktOeW1kNGVhdklxcWVmaWFQ'
-    }
-  }).then(function (data) {
-    let prodotti = data.result
-    console.log(prodotti)
+  $('#navbarSupportedContent .nav-link').click(function (e) {
+    getData($(this).text())
 
-    prodotti.forEach(function (beer) {
-      let beerCard = $(beerCardTpl(beer)).appendTo(container);
-      beerCard.find(".btn").click(function (event) { //seleziono il bottone al click
-        let suggestion = $(this).data("suggestion"); // ricavo il "data-suggestion" dalla selezione
-        if (suggestion == null) {
-          console.error("suggestion not found")
-        } else {
-          let suggestionLowercase = suggestion.toLowerCase() // tolgo le maiuscole dalla stringa
-          suggetsionNoDot = suggestionLowercase.replace(/[^\w\s]|_/g, "") //rimuovo la punteggiatura
-          let splitQuery = suggetsionNoDot.split(" "), // divido la frase in singole parole
-            sw = stopwords.en
-          filteredString = splitQuery.filter(function (parola) { //filtro mantenendo le parole non presenti nel file stopwords
-            if (sw.includes(parola)) {
-              return false
-            } else {
-              return true
-            }
-          });
+  })
 
-          let lastWords = filteredString.slice(-2, filteredString.length) //riduco il numero di parole prendendo le ultime due
-          console.log(lastWords)
+  $('#formQuery').submit (function submitQuery(event) { //funzione per la ricerca libera
+    let userQuery = event.target[0].value //ricavo il valore dalle parole immesse dall'utente
+    console.log(userQuery)
+    getData(userQuery)
+    event.preventDefault()
+})
 
-          //seconda chiamata per le ricette
+// funzione per ricavare i dati
+  function getData(q) { 
+    $.getJSON({ // prima chiamata per le bevande
+      url: 'https://lcboapi.com/products?q=' + q,
+      headers: {
+        'Authorization': 'Token MDo4MDg5NDA5ZS02NWI4LTExZTgtYWVkMy1lYjg2ZTYxZjAyMjg6WEJqeXNha3BzYXl2QTZVeTVyNktOeW1kNGVhdklxcWVmaWFQ'
+      }
+    }).then(function (data) {
 
-          let apiKey = "aa14fbbd2e93d8dee453a8bc3f5fee12"
-          apiID = "69e8573d"
-          url2 = "https://api.edamam.com/search?q=" + lastWords.join(" ") + "&app_id=" + apiID + "&app_key=" + apiKey
-          console.log(url2)
+      container.empty() // svuoto il container
 
-          $.getJSON({
-            url: url2
-          }).then(function (recipes) {
-            console.log(recipes)
-          })
-        }
+      let prodotti = data.result
+
+      prodotti.forEach(function (beer) { //per ogni birra trovata 
+        let beerCard = $(beerCardTpl(beer)).appendTo(container); //crea una card "appesa" al conteiner (Handlebars)
+        beerCard.find(".btn").click(function (event) { //seleziono il bottone al click
+          let suggestion = $(this).data("suggestion"); // ricavo il "data-suggestion" dalla selezione
+          console.log(suggestion)
+          if (suggestion == null) {
+            console.error("suggestion not found")
+          } else {
+            let suggestionLowercase = suggestion.toLowerCase() // tolgo le maiuscole dalla stringa
+            suggetsionNoDot = suggestionLowercase.replace(/[^\w\s]|_/g, "") //rimuovo la punteggiatura
+            let splitQuery = suggetsionNoDot.split(" "), // divido la frase in singole parole
+              sw = stopwords.en
+            filteredString = splitQuery.filter(function (parola) { //filtro mantenendo le parole non presenti nel file stopwords
+              if (sw.includes(parola)) {
+                return false
+              } else {
+                return true
+              }
+            });
+
+            let lastWords = filteredString.slice(-2, filteredString.length) //riduco il numero di parole prendendo le ultime due
+
+            //seconda chiamata per le ricette
+
+            let apiKey = "aa14fbbd2e93d8dee453a8bc3f5fee12"
+            apiID = "69e8573d"
+            url2 = "https://api.edamam.com/search?q=" + lastWords.join(" ") + "&app_id=" + apiID + "&app_key=" + apiKey // creo l'url riunendo le ultime parole con il metodo join
+            
+            $.getJSON({
+              url: url2
+            }).then(function (recipes) {
+              $('#recipe-modal').modal()
+              let ricette = recipes.hits
+              console.log(ricette)
+            })
+          }
+        })
       })
     })
-  })
+  }
 });
+
+
+
