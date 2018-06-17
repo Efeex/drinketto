@@ -1,10 +1,11 @@
 //seleziono ed inizializzio il container per il template di Handlebars
 $(function () {
   var beerCardTpl = Handlebars.compile($("#beer-card").html()),
-    container = $("#drink-container")
-  $('#navbarSupportedContent .nav-link').click(function (e) {
-    getData($(this).text())
+      recipeCardTpl = Handlebars.compile($("#recipe-card").html()),
+      container = $("#drink-container")
 
+  $('#navbarSupportedContent .nav-link').click(function (e) {
+    getData($(this).text()) //prendo il valore dal testo dei link nella navbar per la ricerca
   })
 
   $('#formQuery').submit (function submitQuery(event) { //funzione per la ricerca libera
@@ -58,9 +59,15 @@ $(function () {
             $.getJSON({
               url: url2
             }).then(function (recipes) {
-              $('#recipe-modal').modal()
-              let ricette = recipes.hits
-              console.log(ricette)
+
+                let ricette = recipes.hits[0]
+                    container = $('#modal-container')
+                    beerCard = $(recipeCardTpl(ricette)).appendTo(container)
+
+                $('#recipe-modal').modal().on('hidden.bs.modal', function (e) {
+                  $(this).modal('dispose')
+                })
+                console.log(ricette)             
             })
           }
         })

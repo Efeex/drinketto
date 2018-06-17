@@ -25,23 +25,31 @@
                 <p>Flavor: {{#if style}} "{{style}}" {{else}} "it's surely good!" {{/if}}</p>   
                 <button type="button" class="btn btn-primary btn-success"  data-target="recipe-modal" data-toggle="modal" data-placement="right" title="Anything to eat?" data-suggestion="{{serving_suggestion}}">View receips</button>
             </div>
-            <div class="modal fade bd-example-modal-lg" id="recipe-modal" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <h1>Nome ricetta</h1>
-                    </div>
-                </div>
-            </div>
         </div> 
     </script>
 
     <script id="recipe-card" type="text/x-handlebars-template">
-        
+        <div class="modal fade bd-example-modal-lg" id="recipe-modal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="container">
+                        <div class="row>">
+                            <h1>{{recipe.label}}</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </script>
     <script src="js/index.js"></script>
 </head>
 
 <body>
+
+    <div id="modal-container"> 
+
+    </div>
+
 <!-- Navbar -->
 <nav class="navbar navbar-expand-md navbar-light bg-light">
     <a class="navbar-brand" href="#">Drinketto</a>
