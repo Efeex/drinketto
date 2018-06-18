@@ -33,8 +33,23 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="container">
-                        <div class="row>">
-                            <h1>{{recipe.label}}</h1>
+                        <h3>{{label}}</h3>
+                        <h6>{{../serving_suggestion}}</h6>
+                        <div class="row">
+                            <div class="col-lg">
+                                <img class="img-fluid" src="{{image}}">
+                            </div>
+                            <div class="col-lg ingredient-container"> 
+                                <h5>Ingredients:</h5>
+                                <ul class="ingredient-list">
+                                    {{#each ingredients}}
+                                        <li>{{text}}</li>
+                                    {{/each}}
+                                </ul>   
+                                <a href="{{url}}" target="_blank" type="button" class="btn btn-primary btn-success" data-placement="right" title="Coock it!">
+                                    More details
+                                </a>                                  
+                            </div>   
                         </div>
                     </div>
                 </div>
@@ -59,14 +74,30 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="nav nav-pills nav-fill mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Beer</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Wine</a>
-            </li>
-        </ul>
+            <div class="btn-group ml-2">
+                <a class="btn btn-secondary nav-link" href="#" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false">
+                    Beer
+                </a>
+                <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a href="#" class="dropdown-item nav-link"></a>
+                </div>
+            </div>
+
+            <div class="btn-group ml-2">
+                <a class="btn btn-secondary nav-link" href="#" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false">
+                    Wine
+                </a>
+            <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a href="#" class="dropdown-item nav-link">Red wine</a>
+                <a href="#" class="dropdown-item nav-link">White wine</a>
+            </div>
+        </div>
     </div>
         <form class="form-inline my-2 my-lg-0" id="formQuery">
             <input class="form-control mr-sm-2" type="text" placeholder="Search drinks" aria-label="Search">

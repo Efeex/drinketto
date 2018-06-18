@@ -60,14 +60,15 @@ $(function () {
               url: url2
             }).then(function (recipes) {
 
-                let ricette = recipes.hits[0]
+                let ricette = recipes.hits[0].recipe
                     container = $('#modal-container')
-                    beerCard = $(recipeCardTpl(ricette)).appendTo(container)
-
+                    recipeCard = container.html(recipeCardTpl(ricette))
+                    ingredienti = ricette.ingredients
+                   
                 $('#recipe-modal').modal().on('hidden.bs.modal', function (e) {
                   $(this).modal('dispose')
-                })
-                console.log(ricette)             
+                })  
+                console.log(ricette)
             })
           }
         })
