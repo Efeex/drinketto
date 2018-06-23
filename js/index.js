@@ -2,13 +2,23 @@
 $(function () {
   var beerCardTpl = Handlebars.compile($("#beer-card").html()),
       recipeCardTpl = Handlebars.compile($("#recipe-card").html()),
+      homeTpl = Handlebars.compile($("#homepage").html()),
       container = $("#drink-container")
 
+  $('.navbar-brand').click(function(e){    
+    $(".landingpage").empty()    
+    $("#drink-container").empty()
+    $(homeTpl()).appendTo($(".landingpage"));
+  })
+  
+
   $('#navbarSupportedContent .nav-link').click(function (e) {
+    $(".landingpage").empty()
+    $("#drink-container").empty()
     getData($(this).text()) //prendo il valore dal testo dei link nella navbar per la ricerca
   })
 
-  $('#formQuery').submit (function submitQuery(event) { //funzione per la ricerca libera
+  $('.formQuery').submit (function submitQuery(event) { //funzione per la ricerca libera
     let userQuery = event.target[0].value //ricavo il valore dalle parole immesse dall'utente
     console.log(userQuery)
     getData(userQuery)
@@ -24,12 +34,16 @@ $(function () {
       }
     }).then(function (data) {
 
-      container.empty() // svuoto il container
+      console.log(data)
+
+     // container.empty() // svuoto il container
+     // $('.drinkCard-container .landingpage').css("background-image", "none")
 
       let prodotti = data.result
 
       prodotti.forEach(function (beer) { //per ogni birra trovata 
         let beerCard = $(beerCardTpl(beer)).appendTo(container); //crea una card "appesa" al conteiner (Handlebars)
+        $(".popoverSuggestion").hover().popover('enable');
         beerCard.find(".btn").click(function (event) { //seleziono il bottone al click
           let suggestion = $(this).data("suggestion"); // ricavo il "data-suggestion" dalla selezione
           console.log(suggestion)

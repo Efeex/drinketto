@@ -1,0 +1,21 @@
+.drinkCard-container {
+    background-image: url(../img/bar.jpg);
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center, center; 
+    opacity: 0.9; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.landingpage {
+    height: 100%;
+}
+
+.navbar {
+    background-color: #ffffffe0;
+}

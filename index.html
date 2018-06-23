@@ -6,6 +6,7 @@
     <title>Drinketto</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -13,6 +14,11 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <script src="https://unpkg.com/masonry-layout@4.2.1/dist/masonry.pkgd.min.js"></script>
     <script src="js/allStopwords.js"></script>
+
+    <script id="homepage" type="text/x-handlebars-template">
+
+
+    </script>
 
     <script id="beer-card" type="text/x-handlebars-template">
         <div class="card">
@@ -22,9 +28,11 @@
             </div>
             <img class="card-img-top" src="{{#if image_url}} https://dx5vpyka4lqst.cloudfront.net/products/{{id}}/images/full.jpeg {{else if image_thumb_url}} https://dx5vpyka4lqst.cloudfront.net/products/{{id}}/images/thumb.png {{else}} http://placehold.it/700x400 {{/if}}" alt="Card image cap">
             <div class="card-footer">
-                <p>From: {{origin}}</p>
-                <p>Flavor: {{#if style}} "{{style}}" {{else}} "it's surely good!" {{/if}}</p>   
-                <button type="button" class="btn btn-primary btn-success"  data-target="recipe-modal" data-toggle="modal" data-placement="right" title="Anything to eat?" data-suggestion="{{serving_suggestion}}">View receips</button>
+               
+                <p><i class="fas fa-globe-americas mr-1"></i> {{origin}}</p>
+                <p>Flavor: {{#if style}} "{{style}}" {{else}} "it's surely good!" {{/if}}</p>
+                <p>Tasting note: {{tasting_note}}</p>   
+                <button type="button" class="btn btn-primary btn-warning popoverSuggestion"  data-target="recipe-modal" data-toggle="popover" data-trigger="hover" data-content="{{#if serving_suggestion}} '{{serving_suggestion}}' {{else}} 'Sorry, no suggestion avaibile for this drink' {{/if}}  " data-placement="right" title='Serving suggestion:'  data-suggestion="{{serving_suggestion}}"><i class="fas fa-utensils mr-2"></i>View receips</button>
             </div>
         </div> 
     </script>
@@ -35,7 +43,6 @@
                 <div class="modal-content">
                     <div class="container">
                         <h3>{{label}}</h3>
-                        <h6>{{../serving_suggestion}}</h6>
                         <div class="row">
                             <div class="col-lg">
                             <img class="img-fluid" src="{{image}}">
@@ -47,8 +54,8 @@
                                         <li>{{text}}</li>
                                     {{/each}}
                                 </ul>   
-                                <a href="{{url}}" target="_blank" type="button" class="btn btn-primary btn-success" data-placement="right" title="Coock it!">
-                                    More details
+                                <a href="{{url}}" target="_blank" type="button" class="btn btn-primary btn-success" data-placement="right" title="More details!">
+                                    Coock it!
                                 </a>                                  
                             </div>   
                         </div>
@@ -67,7 +74,7 @@
     </div>
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-md navbar-light bg-light">
+<nav class="navbar navbar-expand-md navbar-light">
     <a class="navbar-brand" href="#">Drinketto</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
         aria-expanded="false" aria-label="Toggle navigation">
@@ -77,7 +84,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="btn-group ml-2">
                 <a class="btn btn-secondary nav-link" href="#" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false">
-                    Beer
+                    <i class="fas fa-beer"></i>
                 </a>
                 <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="sr-only">Toggle Dropdown</span>
@@ -89,7 +96,7 @@
 
             <div class="btn-group ml-2">
                 <a class="btn btn-secondary nav-link" href="#" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false">
-                    Wine
+                    <i class="fas fa-wine-glass-alt"></i>
                 </a>
             <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="sr-only">Toggle Dropdown</span>
@@ -100,16 +107,22 @@
             </div>
         </div>
     </div>
-        <form class="form-inline my-2 my-lg-0" id="formQuery">
+        <form class="form-inline my-2 my-lg-0 formQuery">
             <input class="form-control mr-sm-2" type="text" placeholder="Search drinks" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
 </nav>
-      <!-- Conteiner dei drink-->
-<div class="container my-5">
-    <div id="drink-container" class="card-columns">
-        <!-- Card dei drink -->
+        <!-- Conteiner dei drink-->
+    <div class="container-fluid drinkCard-container"> 
+        <div class="row landingpage justify-content-center">
+
+        </div>
     </div>
-</div>
+        <div class="container my-5">
+            <div id="drink-container" class="card-columns">
+                <!-- Card dei drink -->
+            </div>
+        </div>
+
 </body>
 </html>
