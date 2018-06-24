@@ -19,7 +19,7 @@
 
 
     </script>
-
+    <!-- BEER CARD TEMPLATE-->
     <script id="beer-card" type="text/x-handlebars-template">
         <div class="card">
             <div class="card-header">
@@ -31,39 +31,57 @@
                
                 <p><i class="fas fa-globe-americas mr-1"></i> {{origin}}</p>
                 <p>Flavor: {{#if style}} "{{style}}" {{else}} "it's surely good!" {{/if}}</p>
-                <p>Tasting note: {{tasting_note}}</p>   
+                <button type="text" class="btn btn-info buttonTaste" data-toggle="collapse">Tasting note</button>                
+                <div class="collapse my-2" id="tasteNote">
+                    {{tasting_note}}
+                </div>  
                 <button type="button" class="btn btn-primary btn-warning popoverSuggestion"  data-target="recipe-modal" data-toggle="popover" data-trigger="hover" data-content="{{#if serving_suggestion}} '{{serving_suggestion}}' {{else}} 'Sorry, no suggestion avaibile for this drink' {{/if}}  " data-placement="right" title='Serving suggestion:'  data-suggestion="{{serving_suggestion}}"><i class="fas fa-utensils mr-2"></i>View receips</button>
             </div>
         </div> 
     </script>
-
+    <!-- RECIPE CARD TEMPLATE-->
     <script id="recipe-card" type="text/x-handlebars-template">
-        <div class="modal fade bd-example-modal-lg" id="recipe-modal" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="container">
-                        <h3>{{label}}</h3>
+            <div class="modal fade m-10" id="recipe-modal" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="container">    
                         <div class="row">
-                            <div class="col-lg">
-                            <img class="img-fluid" src="{{image}}">
-                            </div>
-                            <div class="col-lg ingredient-container"> 
-                                <h5>Ingredients:</h5>
-                                <ul class="ingredient-list">
-                                    {{#each ingredients}}
-                                        <li>{{text}}</li>
-                                    {{/each}}
-                                </ul>   
-                                <a href="{{url}}" target="_blank" type="button" class="btn btn-primary btn-success" data-placement="right" title="More details!">
-                                    Coock it!
-                                </a>                                  
+                                <div class="card modal-content">
+                                <div class="card-header">
+                                    <h3>{{label}}</h3>
+                                </div>
+                                <div class="container-fluid recipeImg">
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <img class="img-fluid" src="{{image}}">
+                                        </div>
+                                    </div>                                    
+                                </div>                                
+                                <div class="card-footer">
+                                    <div class="mb-2">
+                                        {{#each healthLabels}}
+                                            <p class="d-inline mr-2"><i class="fas fa-check mr-1"></i>{{this}}</p>                                            
+                                        {{/each}}                                        
+                                    </div>
+                                    <h5>Ingredients:</h5>
+                                    <ul class="ingredient-list list-group list-group-flush mb-3">
+                                        {{#each ingredients}}
+                                            <li class="list-group-item">{{text}}</li>
+                                        {{/each}}
+                                    </ul> 
+                                    <div class="container">
+                                        <div class="row">
+                                            <a href="{{url}}" target="_blank" type="button" class="btn btn-primary btn-success" data-placement="right" title="More details!">
+                                                Coock it!
+                                            </a> 
+                                        </div>      
+                                    </div>  
+                                </div>
                             </div>   
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </script>
+        </script>
     <script src="js/index.js"></script>
 </head>
 

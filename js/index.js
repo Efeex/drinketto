@@ -46,7 +46,6 @@ $(function () {
         $(".popoverSuggestion").hover().popover('enable');
         beerCard.find(".btn").click(function (event) { //seleziono il bottone al click
           let suggestion = $(this).data("suggestion"); // ricavo il "data-suggestion" dalla selezione
-          console.log(suggestion)
           if (suggestion == null) {
             console.error("suggestion not found")
           } else {
@@ -81,8 +80,8 @@ $(function () {
                    
                 $('#recipe-modal').modal().on('hidden.bs.modal', function (e) {
                   $(this).modal('dispose')
-                })  
-                console.log(ricette)
+                })      
+                console.log(ricette.healthLabels)
             })
           }
         })

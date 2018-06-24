@@ -19,3 +19,15 @@
 .navbar {
     background-color: #ffffffe0;
 }
+
+.container .modal-content {
+    position: relative;
+}
+
+.recipeImg, .col {
+    padding: 0px;
+}
+
+.list-group-item {
+    background-color: #fff0 !important;
+}
