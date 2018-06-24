@@ -24,8 +24,12 @@
     position: relative;
 }
 
-.recipeImg, .col {
+.img-recipe {
     padding: 0px;
+}
+
+.recipeSuggestion {
+    padding: 15px;
 }
 
 .list-group-item {

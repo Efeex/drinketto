@@ -73,15 +73,15 @@ $(function () {
               url: url2
             }).then(function (recipes) {
 
-                let ricette = recipes.hits[0].recipe
-                    container = $('#modal-container')
-                    recipeCard = container.html(recipeCardTpl(ricette))
+                let ricette = recipes.hits[0].recipe,
+                    container = $('#modal-container'),
+                    recipeCard = container.html(recipeCardTpl(ricette)),
+                    suggestiOnRecipe = $('.recipeSuggestion').html("This is our suggestion for your drink: " + suggestion)
                     ingredienti = ricette.ingredients
                    
                 $('#recipe-modal').modal().on('hidden.bs.modal', function (e) {
                   $(this).modal('dispose')
-                })      
-                console.log(ricette.healthLabels)
+                }) 
             })
           }
         })
