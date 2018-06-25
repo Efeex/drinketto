@@ -17,25 +17,27 @@
     <script src="js/allStopwords.js"></script>
 
     <script id="homepage" type="text/x-handlebars-template">
-        <div class="col-sm-6 d-flex">
+        <div class="col-md-12 mb-3">
             <div class="card">
-                <img src="img/bar.jpg" class="img-fluid">
+                <div class="custom-img" style="background-image: url(img/bar.jpg)">
+                </div>                
                 <div class="card-header">
-                    <h3 class="card-title"><i class="fas fa-wine-glass-alt mr-2"></i>Search by drinks</h3>
+                    <h3 class="card-title mb-0"><i class="fas fa-wine-glass-alt mr-2"></i>Search by drinks</h3>
                 </div>
                 <div class="card-body">
-                    <p class="card-text">You can search your drink by name, country of origin, category, if there is a match in our database, you will see the results with some details</p>
+                    <p class="card-text">You can search your drink by name, country of origin, category, and you will see the result with some details.</p>
                 </div>
             </div>
         </div>
-        <div class="col-sm-6 d-flex">
-            <div class="card">
-                <img src="img/burger.jpg" class="img-fluid">
+        <div class="col-md-12 mb-3">
+            <div class="card felx-fill">
+                    <div class="custom-img" style="background-image: url(img/burger.jpg)">
+                    </div>
                 <div class="card-header">
-                    <h3 class="card-title"><i class="fas fa-utensils mr-2 hvr-icon"></i>Find your meal</h3>
+                    <h3 class="card-title mb-0"><i class="fas fa-utensils mr-2 hvr-icon"></i>Find your meal</h3>
                 </div>
                 <div class="card-body">
-                    <p class="card-text">We suggest you the perfect food to pair with your drink!</p>
+                    <p class="card-text">We suggest you the perfect food to pair with your drink! We show you the recipe to coock the best meal for your party.</p>
                 </div>
             </div>
         </div>
@@ -116,7 +118,7 @@
     </div>
 
 <!-- Navbar -->
-<nav class="navbar navbar-dark navbar-expand-md">
+<nav class="navbar navbar-dark navbar-expand-md" id="nav">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
         </button>
@@ -184,7 +186,7 @@
         </div>
 
     <div class="container"> 
-        <div class="row homepage-container">
+        <div class="row homepage-container mb-3">
 
         </div>
     </div>

@@ -1,3 +1,20 @@
+.bg-color-y {
+    background-color: #ffc107 !important;
+    border-color: #ffc107 !important;
+    color: white;
+}
+
+.bg-color-v {
+    background-color: violet !important;
+    border-color:   violet !important;
+    color: white;
+}
+
+.bg-color-g {
+    background-color: green !important;
+    border-color:   green !important;
+    color: white;
+}
 
 .navbar, .card-header {
     background-color: #ffc107;
@@ -56,4 +73,11 @@
         -moz-column-count: 4;
         column-count: 4;
     }
+}
+
+.custom-img {
+    height: 300px;
+    background-size: cover;
+    background-repeat: no-repeat; 
+    background-position: center, center;
 }
