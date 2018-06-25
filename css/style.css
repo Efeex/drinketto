@@ -1,23 +1,7 @@
-.drinkCard-container {
-    background-image: url(../img/bar.jpg);
-    height: 100%;
-    width: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center, center; 
-    opacity: 0.9; 
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1;
-}
 
-.landingpage {
-    height: 100%;
-}
-
-.navbar {
-    background-color: #ffffffe0;
+.navbar, .card-header {
+    background-color: #ffc107;
+    color: #ffffff
 }
 
 .container .modal-content {
@@ -34,4 +18,42 @@
 
 .list-group-item {
     background-color: #fff0 !important;
+}
+
+.btn-warning, .btn-outline-warning {
+    color: ffffff;
+}
+
+.btn-warning:hover, .btn-outline-warning:hover {
+    color: ffffff;
+    background-color: #ffc107;
+}
+
+.input-group-append:hover .fa-search {
+    color: #ffc107;
+}
+
+.input-group-append .fa-search {
+    color: #ffffff
+}
+
+.card {
+    border-color: #ffc107;
+}
+
+@media (min-width: 34em) {
+    .card-columns {
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+    }
+    
+}
+
+@media (min-width: 62em) {
+    .card-columns {
+        -webkit-column-count: 4;
+        -moz-column-count: 4;
+        column-count: 4;
+    }
 }

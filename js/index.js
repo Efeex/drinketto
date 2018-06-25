@@ -5,22 +5,26 @@ $(function () {
       homeTpl = Handlebars.compile($("#homepage").html()),
       container = $("#drink-container")
 
+      
+      $(homeTpl()).appendTo($(".homepage-container"));
+
   $('.navbar-brand').click(function(e){    
-    $(".landingpage").empty()    
+    $(".homepage-container").empty()
     $("#drink-container").empty()
-    $(homeTpl()).appendTo($(".landingpage"));
+    $(homeTpl()).appendTo($(".homepage-container")); // torno alla homepage
   })
   
 
   $('#navbarSupportedContent .nav-link').click(function (e) {
-    $(".landingpage").empty()
+    $(".homepage-container").empty()
     $("#drink-container").empty()
     getData($(this).text()) //prendo il valore dal testo dei link nella navbar per la ricerca
   })
 
   $('.formQuery').submit (function submitQuery(event) { //funzione per la ricerca libera
     let userQuery = event.target[0].value //ricavo il valore dalle parole immesse dall'utente
-    console.log(userQuery)
+    $(".homepage-container").empty()
+    $("#drink-container").empty()
     getData(userQuery)
     event.preventDefault()
 })
@@ -36,13 +40,11 @@ $(function () {
 
       console.log(data)
 
-     // container.empty() // svuoto il container
-     // $('.drinkCard-container .landingpage').css("background-image", "none")
-
       let prodotti = data.result
 
       prodotti.forEach(function (beer) { //per ogni birra trovata 
-        let beerCard = $(beerCardTpl(beer)).appendTo(container); //crea una card "appesa" al conteiner (Handlebars)
+      
+        let beerCard = $(beerCardTpl(beer)).appendTo(container); //crea una card "appesa" al conteiner (Handlebars)        
         $(".popoverSuggestion").hover().popover('enable');
         beerCard.find(".btn").click(function (event) { //seleziono il bottone al click
           let suggestion = $(this).data("suggestion"); // ricavo il "data-suggestion" dalla selezione
@@ -76,7 +78,7 @@ $(function () {
                 let ricette = recipes.hits[0].recipe,
                     container = $('#modal-container'),
                     recipeCard = container.html(recipeCardTpl(ricette)),
-                    suggestiOnRecipe = $('.recipeSuggestion').html("This is our suggestion for your drink: " + suggestion)
+                    suggestiOnRecipe = $('.recipeSuggestion').append("This is our suggestion for your drink: " + suggestion)
                     ingredienti = ricette.ingredients
                    
                 $('#recipe-modal').modal().on('hidden.bs.modal', function (e) {
@@ -86,6 +88,15 @@ $(function () {
           }
         })
       })
+        $(".card").mouseover(function(){
+          $(this).addClass("hvr-glow")
+         })
+         $(".card").mouseout(function(){
+           $(this).removeClass("hvr-glow")
+          })
+          $(".popoverSuggestion").click(function(){
+            $(this).addClass("hvr-icon-pop")
+           })
     })
   }
 });

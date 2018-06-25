@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
+    <link href="css/hover-min.css" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
@@ -16,26 +17,48 @@
     <script src="js/allStopwords.js"></script>
 
     <script id="homepage" type="text/x-handlebars-template">
-
-
+        <div class="col-sm-6">
+            <div class="card">
+                <img src="img/bar.jpg" class="img-fluid">
+                <div class="card-header">
+                    <h3 class="card-title">Card title</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <img src="img/bar.jpg" class="img-fluid">
+                <div class="card-header">
+                    <h3 class="card-title">Card title</h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
+                </div>
+            </div>
+        </div>
     </script>
     <!-- BEER CARD TEMPLATE-->
     <script id="beer-card" type="text/x-handlebars-template">
         <div class="card">
             <div class="card-header">
-                    <h4 class="card-title">{{name}}</h4>
-                    <h6 class="card-title">Family: {{#if tertiary_category}} "{{tertiary_category}}" {{else}} "{{secondary_category}}" {{/if}}</h6>
+                <h4 class="card-title">{{name}}</h4>
+                <h6 class="card-title">Family: {{#if tertiary_category}} "{{tertiary_category}}" {{else}} "{{secondary_category}}" {{/if}}</h6>
             </div>
             <img class="card-img-top" src="{{#if image_url}} https://dx5vpyka4lqst.cloudfront.net/products/{{id}}/images/full.jpeg {{else if image_thumb_url}} https://dx5vpyka4lqst.cloudfront.net/products/{{id}}/images/thumb.png {{else}} http://placehold.it/700x400 {{/if}}" alt="Card image cap">
             <div class="card-footer">
                
                 <p><i class="fas fa-globe-americas mr-1"></i> {{origin}}</p>
-                <p>Flavor: {{#if style}} "{{style}}" {{else}} "it's surely good!" {{/if}}</p>
-                <button type="text" class="btn btn-info buttonTaste" data-toggle="collapse">Tasting note</button>                
-                <div class="collapse my-2" id="tasteNote">
-                    {{tasting_note}}
-                </div>  
-                <button type="button" class="btn btn-primary btn-warning popoverSuggestion"  data-target="recipe-modal" data-toggle="popover" data-trigger="hover" data-content="{{#if serving_suggestion}} '{{serving_suggestion}}' {{else}} 'Sorry, no suggestion avaibile for this drink' {{/if}}  " data-placement="right" title='Serving suggestion:'  data-suggestion="{{serving_suggestion}}"><i class="fas fa-utensils mr-2"></i>View receips</button>
+                <p>Flavor: {{#if style}} "{{style}}" {{else}} "it's surely good!" {{/if}}</p> 
+                <button type="button" class="btn btn-warning popoverSuggestion"  data-target="recipe-modal" data-toggle="popover" data-trigger="hover" data-content="{{#if serving_suggestion}} '{{serving_suggestion}}' {{else}} 'Sorry, no suggestion avaibile for this drink' {{/if}}  " data-placement="right" title='Serving suggestion:'  data-suggestion="{{serving_suggestion}}">
+                    <i class="fas fa-utensils mr-2 hvr-icon"></i>View receips
+                </button>
             </div>
         </div> 
     </script>
@@ -54,30 +77,30 @@
                                         <div class="col-sm-4 img-recipe text-center">
                                             <img class="img-fluid" src="{{image}}">
                                         </div>
-                                        <div class="col-sm-8 recipeSuggestion">
-                                            
+                                        <div class="col-sm-8 pt-3">
+                                                {{#each healthLabels}}
+                                                <p class="d-inline mr-2"><i class="fas fa-check mr-1"></i>{{this}}</p>                                            
+                                                {{/each}}  
+                                                <hr> 
+                                                <div class="recipeSuggestion">
+                                                </div>     
+                                                <hr>
+                                                <div class="d-flex flex-column justify-content-end">
+                                                    <a href="{{url}}" target="_blank" type="button" class="btn btn-primary btn-success my-auto align-bottom hvr-shrink" data-placement="right" title="More details!">
+                                                        Coock it!
+                                                    </a>
+                                                </div>
                                         </div>
                                     </div>                                    
                                 </div>                                
-                                <div class="card-footer">
-                                    <div class="mb-2">
-                                        {{#each healthLabels}}
-                                            <p class="d-inline mr-2"><i class="fas fa-check mr-1"></i>{{this}}</p>                                            
-                                        {{/each}}                                        
-                                    </div>
+                                <div class="card-footer">                 
                                     <h5>Ingredients:</h5>
                                     <ul class="ingredient-list list-group list-group-flush mb-3">
                                         {{#each ingredients}}
                                             <li class="list-group-item">{{text}}</li>
                                         {{/each}}
                                     </ul> 
-                                    <div class="container">
-                                        <div class="row">
-                                            <a href="{{url}}" target="_blank" type="button" class="btn btn-primary btn-success" data-placement="right" title="More details!">
-                                                Coock it!
-                                            </a> 
-                                        </div>      
-                                    </div>  
+ 
                                 </div>
                             </div>   
                         </div>
@@ -95,55 +118,76 @@
     </div>
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-md navbar-light">
-    <a class="navbar-brand" href="#">Drinketto</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-        aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class="btn-group ml-2">
-                <a class="btn btn-secondary nav-link" href="#" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false">
+<nav class="navbar navbar-dark navbar-expand-md">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">Drinketto</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <form class="form-inline my-2 my-lg-0 formQuery">
+                <div class="input-group">
+                    <input class="form-control border-light" type="text" placeholder="Search drinks" aria-label="Search">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-light" type="submit"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </form>
+            <div class="d-flex justify-content-between">
+            <div class="btn-group">
+                <a class="btn btn-outline-warning nav-link hvr-grow" href="#" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-beer"></i>
+                    <p hidden>Beer</p>
                 </a>
-                <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="sr-only">Toggle Dropdown</span>
+                <button type="button" class="btn btn-outline-warning dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="sr-only">Beer</span>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a href="#" class="dropdown-item nav-link"></a>
+                    <a href="#" class="dropdown-item nav-link">Lager</a>
+                    <a href="#" class="dropdown-item nav-link">Ipa</a>
                 </div>
             </div>
 
-            <div class="btn-group ml-2">
-                <a class="btn btn-secondary nav-link" href="#" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false">
+            <div class="btn-group">
+                <a class="btn btn-outline-warning nav-link hvr-grow" href="#" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-wine-glass-alt"></i>
+                    <p hidden>Wine</p>
                 </a>
-            <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="sr-only">Toggle Dropdown</span>
+            <button type="button" class="btn btn-outline-warning dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="sr-only">Wine</span>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 <a href="#" class="dropdown-item nav-link">Red wine</a>
                 <a href="#" class="dropdown-item nav-link">White wine</a>
             </div>
         </div>
-    </div>
-        <form class="form-inline my-2 my-lg-0 formQuery">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search drinks" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+
+        <div class="btn-group">
+                <a class="btn btn-outline-warning nav-link hvr-grow" href="#" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-glass-martini"></i>
+                    <p hidden>Spirit</p>
+                </a>
+            <button type="button" class="btn btn-outline-warning dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="sr-only">Spirits</span>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a href="#" class="dropdown-item nav-link">White</a>
+                <a href="#" class="dropdown-item nav-link">Rum</a>
+            </div>
+        </div>
+        </div>
+            
+        </div>
 </nav>
         <!-- Conteiner dei drink-->
-    <div class="container-fluid drinkCard-container"> 
-        <div class="row landingpage justify-content-center">
-
-        </div>
-    </div>
         <div class="container my-5">
             <div id="drink-container" class="card-columns">
                 <!-- Card dei drink -->
             </div>
         </div>
+    <div class="container homepage-container"> 
+        <div class="row">
 
+        </div>
+    </div>
 </body>
 </html>
