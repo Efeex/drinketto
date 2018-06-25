@@ -84,6 +84,9 @@ $(function () {
                 $('#recipe-modal').modal().on('hidden.bs.modal', function (e) {
                   $(this).modal('dispose')
                 }) 
+                $('.btn-danger').click(function () {
+                  $("#recipe-modal").modal('hide')
+                }) 
             })
           }
         })
