@@ -17,29 +17,25 @@
     <script src="js/allStopwords.js"></script>
 
     <script id="homepage" type="text/x-handlebars-template">
-        <div class="col-sm-6">
+        <div class="col-sm-6 d-flex">
             <div class="card">
                 <img src="img/bar.jpg" class="img-fluid">
                 <div class="card-header">
-                    <h3 class="card-title">Card title</h3>
+                    <h3 class="card-title"><i class="fas fa-wine-glass-alt mr-2"></i>Search by drinks</h3>
                 </div>
                 <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
+                    <p class="card-text">You can search your drink by name, country of origin, category, if there is a match in our database, you will see the results with some details</p>
                 </div>
             </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-6 d-flex">
             <div class="card">
-                <img src="img/bar.jpg" class="img-fluid">
+                <img src="img/burger.jpg card-custom" class="img-fluid">
                 <div class="card-header">
-                    <h3 class="card-title">Card title</h3>
+                    <h3 class="card-title"><i class="fas fa-utensils mr-2 hvr-icon"></i>Find your meal</h3>
                 </div>
                 <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
+                    <p class="card-text">We suggest you the perfect food to pair with your drink!</p>
                 </div>
             </div>
         </div>
@@ -85,10 +81,12 @@
                                                 <div class="recipeSuggestion">
                                                 </div>     
                                                 <hr>
-                                                <div class="d-flex flex-column justify-content-end">
-                                                    <a href="{{url}}" target="_blank" type="button" class="btn btn-primary btn-success my-auto align-bottom hvr-shrink" data-placement="right" title="More details!">
+                                                <div class="d-flex flex-row justify-content-end">
+                                                    <a href="{{url}}" target="_blank" type="button" class="btn btn-primary btn-success mb-2 align-bottom hvr-shrink" data-placement="right" title="More details!">
                                                         Coock it!
                                                     </a>
+                                                    <button type="button" class="btn btn-danger hvr-icon-rotate d-block d-md-none mb-2 d-lg-none ml-2" aria-label="Close"><i class="fas fa-times hvr-icon"></i>
+                                                    </button>
                                                 </div>
                                         </div>
                                     </div>                                    
@@ -179,13 +177,14 @@
         </div>
 </nav>
         <!-- Conteiner dei drink-->
-        <div class="container my-5">
+        <div class="container my-3">
             <div id="drink-container" class="card-columns">
                 <!-- Card dei drink -->
             </div>
         </div>
-    <div class="container homepage-container"> 
-        <div class="row">
+
+    <div class="container"> 
+        <div class="row homepage-container">
 
         </div>
     </div>

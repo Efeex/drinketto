@@ -82,9 +82,13 @@ $(function () {
                     ingredienti = ricette.ingredients
                    
                 $('#recipe-modal').modal().on('hidden.bs.modal', function (e) {
-                  $(this).modal('dispose')
-                }) 
+                  $(this).modal('show')
+                })             
+                $('.btn-danger').click(function(){
+                $('#recipe-modal').modals('hide')
             })
+            })
+
           }
         })
       })
