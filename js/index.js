@@ -38,7 +38,7 @@ $(function () {
     $.getJSON({ // prima chiamata per le bevande
       url: 'https://lcboapi.com/products?q=' + q,
       headers: {
-        'Authorization': 'MDoyZDJiZDExYy03OTUxLTExZTgtYjY5OC0wN2Q2N2IwMmJlMGI6VEx6dXlVV0V0UGUyZXp0b2FKSTlkUmg0aGhOZmVvVENqQUtQ'
+        'Authorization': 'Token MDoyZDJiZDExYy03OTUxLTExZTgtYjY5OC0wN2Q2N2IwMmJlMGI6VEx6dXlVV0V0UGUyZXp0b2FKSTlkUmg0aGhOZmVvVENqQUtQ'
       }
     }).then(function (data) {
 
