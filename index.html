@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <link href="css/hover-min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,200i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
@@ -54,7 +55,7 @@
                
                 <p><i class="fas fa-globe-americas mr-1"></i> {{origin}}</p>
                 <p>Flavor: {{#if style}} "{{style}}" {{else}} "it's surely good!" {{/if}}</p> 
-                <button type="button" class="btn btn-warning popoverSuggestion"  data-target="recipe-modal" data-toggle="popover" data-trigger="hover" data-content="{{#if serving_suggestion}} '{{serving_suggestion}}' {{else}} 'Sorry, no suggestion avaibile for this drink' {{/if}}  " data-placement="right" title='Serving suggestion:'  data-suggestion="{{serving_suggestion}}">
+                <button type="button" class="btn btn-warning popoverSuggestion" data-target="recipe-modal" data-toggle="popover" data-trigger="hover" data-content="{{#if serving_suggestion}} '{{serving_suggestion}}' {{else}} 'Sorry, no suggestion avaibile for this drink' {{/if}}  " data-placement="right" title='Serving suggestion:'  data-suggestion="{{serving_suggestion}}">
                     <i class="fas fa-utensils mr-2 hvr-icon"></i>View receips
                 </button>
             </div>

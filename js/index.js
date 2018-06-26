@@ -38,7 +38,7 @@ $(function () {
     $.getJSON({ // prima chiamata per le bevande
       url: 'https://lcboapi.com/products?q=' + q,
       headers: {
-        'Authorization': 'Token MDo4MDg5NDA5ZS02NWI4LTExZTgtYWVkMy1lYjg2ZTYxZjAyMjg6WEJqeXNha3BzYXl2QTZVeTVyNktOeW1kNGVhdklxcWVmaWFQ'
+        'Authorization': 'MDoyZDJiZDExYy03OTUxLTExZTgtYjY5OC0wN2Q2N2IwMmJlMGI6VEx6dXlVV0V0UGUyZXp0b2FKSTlkUmg0aGhOZmVvVENqQUtQ'
       }
     }).then(function (data) {
 
@@ -86,11 +86,10 @@ $(function () {
               ingredienti = ricette.ingredients
 
               $('#recipe-modal').modal().on('hidden.bs.modal', function (e) {
-                $(this).modal('dispose')
-              })
+              $(this).modal('dispose')
+             })
               $('.btn-danger').click(function (e) {
                 $("#recipe-modal").modal('hide')
-                e.preventDefault()
               })
             })
           }
