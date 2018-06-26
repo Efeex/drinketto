@@ -36,7 +36,7 @@ $(function () {
   // funzione per ricavare i dati
   function getData(q) {
     $.getJSON({ // prima chiamata per le bevande
-      url: 'https://lcboapi.com/products?q=' + q,
+      url: 'https://efeex.github.io/lcboapi.com/products?q=' + q,
       headers: {
         'Authorization': 'Token MDoyZDJiZDExYy03OTUxLTExZTgtYjY5OC0wN2Q2N2IwMmJlMGI6VEx6dXlVV0V0UGUyZXp0b2FKSTlkUmg0aGhOZmVvVENqQUtQ'
       }
