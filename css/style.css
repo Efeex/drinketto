@@ -62,20 +62,30 @@ body {
     border-color: #ffc107;
 }
 
-@media (min-width: 34em) {
+.popover {
+    display: none;
+}
+
+@media only screen and (min-width: 576px) {
     .card-columns {
         -webkit-column-count: 2;
         -moz-column-count: 2;
         column-count: 2;
     }
+    .popover {
+        display: none;
+    }
     
 }
 
-@media (min-width: 62em) {
+@media only screen and (min-width: 992px) {
     .card-columns {
         -webkit-column-count: 4;
         -moz-column-count: 4;
         column-count: 4;
+    }
+    .popover {
+        display: inline;
     }
 }
 

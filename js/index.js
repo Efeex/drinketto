@@ -88,8 +88,9 @@ $(function () {
               $('#recipe-modal').modal().on('hidden.bs.modal', function (e) {
               $(this).modal('dispose')
              })
-              $('.btn-danger').click(function (e) {
+              $('.btn-danger').on('click', function (e) {
                 $("#recipe-modal").modal('hide')
+                e.preventDefault()
               })
             })
           }
@@ -101,7 +102,7 @@ $(function () {
       $(".card").mouseout(function () {
         $(this).removeClass("hvr-glow")
       })
-      $(".popoverSuggestion").click(function () {
+      $(".popoverSuggestion").on("click", function () {
         $(this).addClass("hvr-icon-pop")
       })
     })
