@@ -55,7 +55,7 @@
                
                 <p><i class="fas fa-globe-americas mr-1"></i> {{origin}}</p>
                 <p>Flavor: {{#if style}} "{{style}}" {{else}} "it's surely good!" {{/if}}</p> 
-                <button type="button" class="btn btn-warning popoverSuggestion" data-target="recipe-modal" data-toggle="popover" data-trigger="hover" data-content="{{#if serving_suggestion}} '{{serving_suggestion}}' {{else}} 'Sorry, no suggestion avaibile for this drink' {{/if}}" data-placement="right" data-suggestion="{{serving_suggestion}}">
+                <button class="btn btn-warning popoverSuggestion" data-target="recipe-modal" data-toggle="popover" data-trigger="hover" data-content="{{#if serving_suggestion}} '{{serving_suggestion}}' {{else}} 'Sorry, no suggestion avaibile for this drink' {{/if}}" data-placement="right" data-suggestion="{{serving_suggestion}}">
                     <i class="fas fa-utensils mr-2 hvr-icon"></i>View receips
                 </button>
             </div>
